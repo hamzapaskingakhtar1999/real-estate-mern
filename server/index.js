@@ -13,9 +13,6 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/api/user", userRouter);
-app.use("/api/auth", authRouter);
-
 /* Middleware to handle possible errors */
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
@@ -26,6 +23,9 @@ app.use((err, req, res, next) => {
     message,
   });
 });
+
+app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
 
 mongoose
   .connect(process.env.MONGO_URI)

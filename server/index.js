@@ -8,13 +8,10 @@ dotenv.config({ path: "../.env" });
 const app = express();
 
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connected to MongoDB");
   })
   .catch((err) => console.log(err));
 
-app.listen(3000, () => console.log("Listening in PORT: 3000!"));
+app.listen(3000, () => console.log("Listening in PORT: 3000 !!!"));
